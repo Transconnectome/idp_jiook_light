@@ -48,13 +48,13 @@ def main(argv):
 			print("ADNI_Combine.py -k <kfold>")
 			sys.exit()
 		elif opt in ("-k"):
-			K = int(arg)	
+			K = int(arg)
 			print("k for cv is "+str(K))
 	return K
-			
+
 K = main(sys.argv[1:])
 
-print("K fold is "+ str(K))     
+print("K fold is "+ str(K))
 # K=10
 
 ##read the data and clean data
@@ -83,7 +83,7 @@ def data_fetch_clean(file,type):
     X = stats.zscore(X)
     #print(features.shape)
     y=data[:,type]
-#/ 6:AD-normal / 7:AD-MCI / 8:MCI-normal 
+#/ 6:AD-normal / 7:AD-MCI / 8:MCI-normal
 
 
     ind_num=np.isnan(y)
@@ -156,7 +156,7 @@ def main_classifier(X,y,name,filename,params,pipe,path_to_save,key):
         avg_sen = []
         avg_spec = []
         avg_f1s = []
-        
+
         roc_label = []
         roc_pred = []
         roc_prob = []
@@ -164,8 +164,8 @@ def main_classifier(X,y,name,filename,params,pipe,path_to_save,key):
         for train_index, test_index in outer_cv.split(X, y):
             X_train, X_test = X[train_index], X[test_index]
             y_train, y_test = y[train_index], y[test_index]
-            
-            clf = GridSearchCV(estimator=pipe, param_grid=params, cv=inner_cv, scoring='accuracy',n_jobs=96)
+
+            clf = GridSearchCV(estimator=pipe, param_grid=params, cv=inner_cv, scoring='accuracy',n_jobs=48)
             clf.fit(X_train, y_train)
 
             fs = clf.best_estimator_.named_steps['featureExtract']
@@ -179,13 +179,13 @@ def main_classifier(X,y,name,filename,params,pipe,path_to_save,key):
             acc = accuracy_score(y_test, y_pred)
             f1=f1_score(y_test, y_pred)
             auc = roc_auc_score(y_test, y_prob[:, 1])
-            
-            
+
+
             roc_label = np.append(roc_label, y_test)
             roc_pred = np.append(roc_pred, y_pred)
             roc_prob = np.append(roc_prob, y_prob[:, 1])
 
-            
+
             conf_mat = confusion_matrix(y_test, y_pred)
 
             TP = conf_mat[0][0]
@@ -207,7 +207,7 @@ def main_classifier(X,y,name,filename,params,pipe,path_to_save,key):
             avg_sen = np.append(avg_sen, sen)
             avg_spec = np.append(avg_spec, spec)
             avg_auc = np.append(avg_auc, auc)
-        
+
         all_TP = np.append(all_TP, avg_TP)
         all_TN = np.append(all_TN, avg_TN)
         all_FP = np.append(all_FP, avg_FP)
@@ -229,9 +229,9 @@ def main_classifier(X,y,name,filename,params,pipe,path_to_save,key):
         all_auc= all_auc.reshape(-1,1)
         all_f1s= all_f1s.reshape(-1,1)
 
-        
+
         #FD=pd.DataFrame(np.hstack((all_acc,all_sen,all_spec,all_auc,all_f1s)),columns=["Accuracy","Sensitivity","Specificity","AUC","F1"])
-        
+
 #         print("Accuracy Avg: {}".format(np.mean(avg_acc)))
 #         print("Accuracy Standard Deviation: {}".format(np.std(avg_acc)))
 #         print("Sensitivity Avg: {}".format(np.mean(avg_sen)))
@@ -250,7 +250,7 @@ def main_classifier(X,y,name,filename,params,pipe,path_to_save,key):
     spec_CI=st.t.interval(0.95, len(all_spec)-1, loc=np.mean(all_spec), scale=st.sem(all_spec))
     auc_CI=st.t.interval(0.95, len(all_auc)-1, loc=np.mean(all_auc), scale=st.sem(all_auc))
     import os
-    
+
 #     if not os.path.exists('../imgs3_idp/'+  todaystr+'/'+filename):
 #         os.makedirs('../imgs3_idp/'+filename)
     txt_name=path_to_save+'/'+name +  '.txt'
@@ -258,9 +258,9 @@ def main_classifier(X,y,name,filename,params,pipe,path_to_save,key):
     print("AUC={a}, 95%CI={l}-{u}".format(a=np.mean(all_auc), l=auc_CI[0],u=auc_CI[1]),file=open(txt_name, "a"))
     print("SENSITIVITY={a}, 95%CI={l}-{u}".format(a=np.mean(all_sen), l=sen_CI[0],u=sen_CI[1]),file=open(txt_name, "a"))
     print("SPECIFICITY={a}, 95%CI={l}-{u}".format(a=np.mean(all_spec), l=spec_CI[0],u=spec_CI[1]),file=open(txt_name, "a"))
-    
-    
-    
+
+
+
     fpr = dict()
     tpr = dict()
     roc_auc = dict()
@@ -277,16 +277,16 @@ def main_classifier(X,y,name,filename,params,pipe,path_to_save,key):
     plt.xlabel('False Positive Rate')
     plt.ylabel('True Positive Rate')
     plt.title(name)
-    plt.legend(loc="lower right") 
+    plt.legend(loc="lower right")
     #plt.savefig('10x_Combined_ROC.eps')
     roc_name=path_to_save+'/'+name +'.pdf'
     plt.savefig(roc_name)
     #plt.show()
 
-#    return 
+#    return
 
 
-    
+
 
 
 # In[4]:
@@ -307,12 +307,12 @@ print(os.getcwd())
 
 import time, datetime, os
 
-today = datetime.date.today()  
+today = datetime.date.today()
 
 todaystr = today.isoformat()
 os.makedirs('../../imgs3_adni/'+ todaystr, exist_ok=True)
 os.makedirs('../../imgs3_adni/'+ todaystr+'/'+filename+'_'+ str(K)+'fold', exist_ok=True)
-  
+
 # if not os.path.exists('../../imgs3_adni/'+todaystr):
 #    # print('exist')
 #     os.mkdir('../../imgs3_adni/'+ todaystr)
@@ -325,15 +325,15 @@ os.makedirs('../../imgs3_adni/'+ todaystr+'/'+filename+'_'+ str(K)+'fold', exist
 
 # In[ ]:
 
-models1 = { 
-    
+models1 = {
+
     'RandomForestClassifier': RandomForestClassifier(),
     'SVC': SVC(probability=True),
     'linear_model.LogisticRegression':linear_model.LogisticRegression()
-    
+
 }
 
-params1 = { 
+params1 = {
             'RandomForestClassifier': [{ 'RandomForestClassifier__n_estimators': np.arange(10, 500, 50) },
                                        {'RandomForestClassifier__min_samples_leaf': np.arange(1, 51, 5)},
                                       ],
@@ -377,10 +377,10 @@ for key, value in models1.items():
             main_classifier(X,y,name,filename,para,pipe,path_to_save,key)
             #FD=main_classifier(X,y,name,filename,para,pipe,path_to_save,key)
             #M=FD.mean(axis=0)
-            
+
             #S=FD.std(axis=0)
             ##S.rename(index={S.index[0]: name})
-            
+
             #MM=MM.append(M,ignore_index=True)
             #SS=SS.append(S,ignore_index=True)
     #MM.index=save_name
