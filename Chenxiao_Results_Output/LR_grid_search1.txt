@@ -1,0 +1,2 @@
+C=10.000000. 
+Runs Max Accuracies: 0.738974358974359Happens at:Runs Max F1s: 0.6645687645687646
