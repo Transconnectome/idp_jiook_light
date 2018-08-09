@@ -230,7 +230,7 @@ def main_classifier(X,y,name,filename,params,pipe,path_to_save,key):
         all_f1s= all_f1s.reshape(-1,1)
 
         
-        FD=pd.DataFrame(np.hstack((all_acc,all_sen,all_spec,all_auc,all_f1s)),columns=["Accuracy","Sensitivity","Specificity","AUC","F1"])
+        #FD=pd.DataFrame(np.hstack((all_acc,all_sen,all_spec,all_auc,all_f1s)),columns=["Accuracy","Sensitivity","Specificity","AUC","F1"])
         
 #         print("Accuracy Avg: {}".format(np.mean(avg_acc)))
 #         print("Accuracy Standard Deviation: {}".format(np.std(avg_acc)))
@@ -374,17 +374,18 @@ for key, value in models1.items():
 #             X_feature=F.transform(X)
 #             list(X_features)
             name=save_name[i-6]
-            FD=main_classifier(X,y,name,filename,para,pipe,path_to_save,key)
-            M=FD.mean(axis=0)
+            main_classifier(X,y,name,filename,para,pipe,path_to_save,key)
+            #FD=main_classifier(X,y,name,filename,para,pipe,path_to_save,key)
+            #M=FD.mean(axis=0)
             
-            S=FD.std(axis=0)
-            #S.rename(index={S.index[0]: name})
+            #S=FD.std(axis=0)
+            ##S.rename(index={S.index[0]: name})
             
-            MM=MM.append(M,ignore_index=True)
-            SS=SS.append(S,ignore_index=True)
-    MM.index=save_name
-    SS.index=save_name
-    writer = pd.ExcelWriter(path_save+key+'_Performance.xlsx')
-    MM.to_excel(writer,'Mean')
-    SS.to_excel(writer,'SD')
-    writer.save()
+            #MM=MM.append(M,ignore_index=True)
+            #SS=SS.append(S,ignore_index=True)
+    #MM.index=save_name
+    #SS.index=save_name
+    #writer = pd.ExcelWriter(path_save+key+'_Performance.xlsx')
+    #MM.to_excel(writer,'Mean')
+    #SS.to_excel(writer,'SD')
+    #writer.save()
