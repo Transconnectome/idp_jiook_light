@@ -51,6 +51,9 @@ def main(argv):
          elif opt in ("-k"):
               K = int(arg)
               print("k for cv is "+str(K))
+        elif opt in ("-f"):
+              filename = arg
+              print("data filename is "+filename)
     return K
 
 K = main(sys.argv[1:])
@@ -307,7 +310,7 @@ save_name=["AD vs SMC","MCI vs SMC","ADonly vs SMC","AD vs MCI","ADonly vs MCI",
 
 # In[5]:
 
-filename='data_2_conn'
+# filename='data_2_conn'
 file=filename+'.csv'
 cwd=os.getcwd()
 print(os.getcwd())
