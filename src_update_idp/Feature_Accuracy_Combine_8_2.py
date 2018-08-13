@@ -51,7 +51,7 @@ def main(argv):
          elif opt in ("-k"):
               K = int(arg)
               print("k for cv is "+str(K))
-        elif opt in ("-f"):
+         elif opt in ("-f"):
               filename = arg
               print("data filename is "+filename)
     return K
