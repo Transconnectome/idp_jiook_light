@@ -41,7 +41,7 @@ def main(argv):
     K = ''
     filename = ''
     try:
-        opts, args = getopt.getopt(argv,"k:h:f")
+        opts, args = getopt.getopt(argv,"k:f:h")
     except getopt.GetoptError:
          print("GetoptError")
          sys.exit(2)
