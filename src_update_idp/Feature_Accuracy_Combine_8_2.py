@@ -38,20 +38,20 @@ import sys, getopt
 # K=sys.argv[1]
 
 def main(argv):
-	K = ''
-	try:
-		opts, args = getopt.getopt(argv,"k:h")
-	except getopt.GetoptError:
-		print("GetoptError")
-		sys.exit(2)
-	for opt, arg in opts:
-		if opt == '-h':
-			print("ADNI_Combine.py -k <kfold>")
-			sys.exit()
-		elif opt in ("-k"):
-			K = int(arg)
-			print("k for cv is "+str(K))
-	return K
+    K = ''
+    try:
+    opts, args = getopt.getopt(argv,"k:h")
+    except getopt.GetoptError:
+    print("GetoptError")
+    sys.exit(2)
+    for opt, arg in opts:
+    if opt == '-h':
+    print("ADNI_Combine.py -k <kfold>")
+    sys.exit()
+    elif opt in ("-k"):
+    K = int(arg)
+    print("k for cv is "+str(K))
+    return K
 
 K = main(sys.argv[1:])
 
@@ -239,7 +239,7 @@ def main_classifier(X,y,name,filename,params,pipe,path_to_save,key):
         all_f1s= all_f1s.reshape(-1,1)
 
 
-        FD=pd.DataFrame(np.hstack((all_acc,all_sen,all_spec,all_auc,all_f1s)),columns=["Accuracy","Sensitivity","Specificity","AUC","F1"])
+        # FD=pd.DataFrame(np.hstack((all_acc,all_sen,all_spec,all_auc,all_f1s)),columns=["Accuracy","Sensitivity","Specificity","AUC","F1"])
 
 #         print("Accuracy Avg: {}".format(np.mean(avg_acc)))
 #         print("Accuracy Standard Deviation: {}".format(np.std(avg_acc)))
@@ -258,7 +258,6 @@ def main_classifier(X,y,name,filename,params,pipe,path_to_save,key):
     sen_CI=st.t.interval(0.95, len(all_sen)-1, loc=np.mean(all_sen), scale=st.sem(all_sen))
     spec_CI=st.t.interval(0.95, len(all_spec)-1, loc=np.mean(all_spec), scale=st.sem(all_spec))
     auc_CI=st.t.interval(0.95, len(all_auc)-1, loc=np.mean(all_auc), scale=st.sem(all_auc))
-    import os
 
 #     if not os.path.exists('../imgs3_idp/'+  todaystr+'/'+filename):
 #         os.makedirs('../imgs3_idp/'+filename)
@@ -292,7 +291,7 @@ def main_classifier(X,y,name,filename,params,pipe,path_to_save,key):
     plt.savefig(roc_name)
     #plt.show()
 
-    return FD
+    #return FD
 
 
 # In[ ]:
@@ -359,11 +358,11 @@ for key, value in models1.items():
     pipe=Pipeline([
                 ('featureExtract', SelectFromModel(ExtraTreesClassifier())),
                 (key, models1[key])
-            ])
+                ])
     print(key)
     para=params1[key]
     path_to_save=path_save+key
-	os.makedirs(path_to_save, exist_ok=True)
+    os.makedirs(path_to_save, exist_ok=True)
 # if not os.path.exists(path_to_save):
 #     os.mkdir(path_to_save)
     MM=pd.DataFrame()
@@ -371,25 +370,25 @@ for key, value in models1.items():
     for i in range(5,11):
             print(save_name[i-5])
             X,y=data_fetch_clean(file,i)
-
             y = y.reshape(-1)
 #             F=SelectFromModel(ExtraTreesClassifier(),prefit=True)
 #             X_feature=F.transform(X)
 #             list(X_features)
             name=save_name[i-5]
-            FD=main_classifier(X,y,name,filename,para,pipe,path_to_save,key)
-            M=FD.mean(axis=0)
-
-            S=FD.std(axis=0)
-            #S.rename(index={S.index[0]: name})
-
-            MM=MM.append(M,ignore_index=True)
-            MM.rename(index={MM.index[i-5]: name})
-            SS=SS.append(S,ignore_index=True)
-            SS.rename(index={SS.index[i-5]: name})
-    MM.index=save_name
-    SS.index=save_name
-    writer = pd.ExcelWriter(path_save+key+'_Performance.xlsx')
-    MM.to_excel(writer,'Mean')
-    SS.to_excel(writer,'SD')
-    writer.save()
+            main_classifier(X,y,name,filename,para,pipe,path_to_save,key)
+    #         FD=main_classifier(X,y,name,filename,para,pipe,path_to_save,key)
+    #         M=FD.mean(axis=0)
+    #
+    #         S=FD.std(axis=0)
+    #         #S.rename(index={S.index[0]: name})
+    #
+    #         MM=MM.append(M,ignore_index=True)
+    #         MM.rename(index={MM.index[i-5]: name})
+    #         SS=SS.append(S,ignore_index=True)
+    #         SS.rename(index={SS.index[i-5]: name})
+    # MM.index=save_name
+    # SS.index=save_name
+    # writer = pd.ExcelWriter(path_save+key+'_Performance.xlsx')
+    # MM.to_excel(writer,'Mean')
+    # SS.to_excel(writer,'SD')
+    # writer.save()
