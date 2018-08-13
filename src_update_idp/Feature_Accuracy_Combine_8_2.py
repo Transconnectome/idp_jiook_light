@@ -37,8 +37,9 @@ from sklearn.metrics import roc_curve, auc,f1_score
 import sys, getopt
 # K=sys.argv[1]
 
-def main(argv):
+def getopt(argv):
     K = ''
+    filename = ''
     try:
         opts, args = getopt.getopt(argv,"k:h:f")
     except getopt.GetoptError:
@@ -52,11 +53,11 @@ def main(argv):
               K = int(arg)
               print("k for cv is "+str(K))
          elif opt in ("-f"):
-              filename = str(arg)
+              filename = arg
               print("data filename is "+filename)
-    return K
+    return K, filename
 
-K = main(sys.argv[1:])
+K,filename = getopt(sys.argv[1:])
 
 print("K fold is "+ str(K))
 # K=10
