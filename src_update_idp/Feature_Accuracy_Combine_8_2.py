@@ -40,17 +40,17 @@ import sys, getopt
 def main(argv):
     K = ''
     try:
-    opts, args = getopt.getopt(argv,"k:h")
+        opts, args = getopt.getopt(argv,"k:h")
     except getopt.GetoptError:
-    print("GetoptError")
-    sys.exit(2)
+         print("GetoptError")
+         sys.exit(2)
     for opt, arg in opts:
-    if opt == '-h':
-    print("ADNI_Combine.py -k <kfold>")
-    sys.exit()
-    elif opt in ("-k"):
-    K = int(arg)
-    print("k for cv is "+str(K))
+         if opt == '-h':
+              print("ADNI_Combine.py -k <kfold>")
+              sys.exit()
+         elif opt in ("-k"):
+              K = int(arg)
+              print("k for cv is "+str(K))
     return K
 
 K = main(sys.argv[1:])
@@ -80,6 +80,7 @@ def data_fetch_clean(file,type):
     data=np.array(dd)
     #print(data.shape)
     idx_IN_columns = np.array(range(11,data.shape[1]))
+
     print(idx_IN_columns)
     X=data[:,idx_IN_columns]
     X = stats.zscore(X)
