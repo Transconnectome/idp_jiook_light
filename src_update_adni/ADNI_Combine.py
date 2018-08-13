@@ -246,10 +246,10 @@ def main_classifier(X,y,name,filename,params,pipe,path_to_save,key):
     pickle.dump(all_roc_prob, open(path_to_save+'/'+'roc_prob_'+name+'.p', "wb"))
     pickle.dump(all_features, open(path_to_save+'/'+'features_30'+name+'.p', "wb"))
 
-    acc_CI=st.t.interval(0.95, len(all_acc)-1, loc=np.nanmean(all_acc), scale=st.sem(all_acc,nan_policy = omit))
-    sen_CI=st.t.interval(0.95, len(all_sen)-1, loc=np.nanmean(all_sen), scale=st.sem(all_sen,nan_policy = omit))
-    spec_CI=st.t.interval(0.95, len(all_spec)-1, loc=np.nanmean(all_spec), scale=st.sem(all_spec,nan_policy = omit))
-    auc_CI=st.t.interval(0.95, len(all_auc)-1, loc=np.nanmean(all_auc), scale=st.sem(all_auc,nan_policy = omit))
+    acc_CI=st.t.interval(0.95, len(all_acc)-1, loc=np.nanmean(all_acc), scale=st.sem(all_acc))
+    sen_CI=st.t.interval(0.95, len(all_sen)-1, loc=np.nanmean(all_sen), scale=st.sem(all_sen))
+    spec_CI=st.t.interval(0.95, len(all_spec)-1, loc=np.nanmean(all_spec), scale=st.sem(all_spec))
+    auc_CI=st.t.interval(0.95, len(all_auc)-1, loc=np.nanmean(all_auc), scale=st.sem(all_auc))
     import os
 
 #     if not os.path.exists('../imgs3_idp/'+  todaystr+'/'+filename):
