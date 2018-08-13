@@ -49,10 +49,10 @@ def main(argv):
          if opt == '-h':
               print("Feature_Accuracy_Combine_8_2.py -k <kfold> -f <csv_filename>")
               sys.exit()
-         elif opt in ("-k"):
+         elif opt == '-k':
               K = int(arg)
               print("k for cv is "+str(K))
-         elif opt in ("-f"):
+         elif opt == '-f':
               filename = arg
               print("data filename is "+filename)
     return K, filename
