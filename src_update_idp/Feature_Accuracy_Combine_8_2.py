@@ -310,7 +310,9 @@ save_name=["AD vs SMC","MCI vs SMC","ADonly vs SMC","AD vs MCI","ADonly vs MCI",
 filename='data_2_conn'
 file=filename+'.csv'
 cwd=os.getcwd()
+print(os.getcwd())
 os.chdir('../braindata')
+print(os.getcwd())
 
 
 # In[6]:
