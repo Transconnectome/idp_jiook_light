@@ -55,10 +55,10 @@ def main(argv):
          elif opt == '-f':
               filename = arg
               print("data filename is " + filename)
-    # return K, filename
-    save(K, filename)
-    
-K, filename = main(sys.argv[1:])
+    return filename, K
+    #save(K, filename)
+
+filename, K = main(sys.argv[1:])
 
 print("K fold is "+ str(K))
 print("data filename is " + filename)
