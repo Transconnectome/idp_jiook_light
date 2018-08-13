@@ -136,8 +136,8 @@ def main_classifier(X,y,name,filename,params,pipe,path_to_save,key):
     all_features=[]
     n_fold = K
 #     rs_list=[33994,31358,27381,8642,7012,42023,44642,44002,30706,12571]
-#    rs_list = [33994,31358,27381]
-    rs_list = [33994]
+    rs_list = [33994,31358,27381]
+#    rs_list = [33994]
     for rs in rs_list:
         print('********random seed:{}'.format(rs))
 
