@@ -37,7 +37,7 @@ from sklearn.metrics import roc_curve, auc,f1_score
 import sys, getopt
 # K=sys.argv[1]
 
-def getopt(argv):
+def main(argv):
     K = ''
     filename = ''
     try:
@@ -57,7 +57,7 @@ def getopt(argv):
               print("data filename is "+filename)
     return K, filename
 
-K,filename = getopt(sys.argv[1:])
+K,filename = main(sys.argv[1:])
 
 print("K fold is "+ str(K))
 # K=10
