@@ -52,7 +52,7 @@ def main(argv):
               K = int(arg)
               print("k for cv is "+str(K))
          elif opt in ("-f"):
-              filename = arg
+              filename = str(arg)
               print("data filename is "+filename)
     return K
 
