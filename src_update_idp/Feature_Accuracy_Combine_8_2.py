@@ -54,13 +54,14 @@ def main(argv):
               print("k for cv is "+str(K))
          elif opt == '-f':
               filename = arg
-              print("data filename is "+filename)
-    return K, filename
-
-K,filename = main(sys.argv[1:])
+              print("data filename is " + filename)
+    # return K, filename
+    save(K, filename)
+    
+K, filename = main(sys.argv[1:])
 
 print("K fold is "+ str(K))
-print("data filename is "+filename)
+print("data filename is " + filename)
 
 # K=10
 
