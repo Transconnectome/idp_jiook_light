@@ -254,10 +254,10 @@ def main_classifier(X,y,name,filename,params,pipe,path_to_save,key):
 #     if not os.path.exists('../imgs3_idp/'+  todaystr+'/'+filename):
 #         os.makedirs('../imgs3_idp/'+filename)
     txt_name=path_to_save+'/'+name +  '.txt'
-    print("ACC={a},  95%CI={l}-{u}".format(a=np.mean(all_acc), l=acc_CI[0],u=acc_CI[1]),file=open(txt_name, "a"))
-    print("AUC={a}, 95%CI={l}-{u}".format(a=np.mean(all_auc), l=auc_CI[0],u=auc_CI[1]),file=open(txt_name, "a"))
-    print("SENSITIVITY={a}, 95%CI={l}-{u}".format(a=np.mean(all_sen), l=sen_CI[0],u=sen_CI[1]),file=open(txt_name, "a"))
-    print("SPECIFICITY={a}, 95%CI={l}-{u}".format(a=np.mean(all_spec), l=spec_CI[0],u=spec_CI[1]),file=open(txt_name, "a"))
+    print("ACC={a},  95%CI={l}-{u}, sd={sd}".format(a=np.nanmean(all_acc),l=acc_CI[0], u=acc_CI[1], sd=np.nanstd(all_acc)),file=open(txt_name, "a"))
+    print("AUC={a}, 95%CI={l}-{u},sd={sd}".format(a=np.nanmean(all_auc), l=auc_CI[0], u=auc_CI[1], sd=np.nanstd(all_acc)),file=open(txt_name, "a"))
+    print("SENSITIVITY={a}, 95%CI={l}-{u},sd={sd}".format(a=np.nanmean(all_sen), l=sen_CI[0],u=sen_CI[1], sd=np.nanstd(all_acc)),file=open(txt_name, "a"))
+    print("SPECIFICITY={a}, 95%CI={l}-{u},sd={sd}".format(a=np.nanmean(all_spec), l=spec_CI[0],u=spec_CI[1], sd=np.nanstd(all_acc)),file=open(txt_name, "a"))
 
 
 
