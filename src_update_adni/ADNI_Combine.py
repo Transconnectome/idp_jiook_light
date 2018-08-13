@@ -246,19 +246,19 @@ def main_classifier(X,y,name,filename,params,pipe,path_to_save,key):
     pickle.dump(all_roc_prob, open(path_to_save+'/'+'roc_prob_'+name+'.p', "wb"))
     pickle.dump(all_features, open(path_to_save+'/'+'features_30'+name+'.p', "wb"))
 
-    acc_CI=st.t.interval(0.95, len(all_acc)-1, loc=np.mean(all_acc), scale=st.sem(all_acc))
-    sen_CI=st.t.interval(0.95, len(all_sen)-1, loc=np.mean(all_sen), scale=st.sem(all_sen))
-    spec_CI=st.t.interval(0.95, len(all_spec)-1, loc=np.mean(all_spec), scale=st.sem(all_spec))
-    auc_CI=st.t.interval(0.95, len(all_auc)-1, loc=np.mean(all_auc), scale=st.sem(all_auc))
+    acc_CI=st.t.interval(0.95, len(all_acc)-1, loc=np.nanmean(all_acc), scale=st.sem(all_acc,nan_policy = ‘omit’))
+    sen_CI=st.t.interval(0.95, len(all_sen)-1, loc=np.nanmean(all_sen), scale=st.sem(all_sen,nan_policy = ‘omit’))
+    spec_CI=st.t.interval(0.95, len(all_spec)-1, loc=np.nanmean(all_spec), scale=st.sem(all_spec,nan_policy = ‘omit’))
+    auc_CI=st.t.interval(0.95, len(all_auc)-1, loc=np.nanmean(all_auc), scale=st.sem(all_auc,nan_policy = ‘omit’))
     import os
 
 #     if not os.path.exists('../imgs3_idp/'+  todaystr+'/'+filename):
 #         os.makedirs('../imgs3_idp/'+filename)
     txt_name=path_to_save+'/'+name +  '.txt'
     print("ACC={a},  95%CI={l}-{u}, sd={sd}".format(a=np.nanmean(all_acc),l=acc_CI[0], u=acc_CI[1], sd=np.nanstd(all_acc)),file=open(txt_name, "a"))
-    print("AUC={a}, 95%CI={l}-{u},sd={sd}".format(a=np.nanmean(all_auc), l=auc_CI[0], u=auc_CI[1], sd=np.nanstd(all_acc)),file=open(txt_name, "a"))
-    print("SENSITIVITY={a}, 95%CI={l}-{u},sd={sd}".format(a=np.nanmean(all_sen), l=sen_CI[0],u=sen_CI[1], sd=np.nanstd(all_acc)),file=open(txt_name, "a"))
-    print("SPECIFICITY={a}, 95%CI={l}-{u},sd={sd}".format(a=np.nanmean(all_spec), l=spec_CI[0],u=spec_CI[1], sd=np.nanstd(all_acc)),file=open(txt_name, "a"))
+    print("AUC={a}, 95%CI={l}-{u},sd={sd}".format(a=np.nanmean(all_auc), l=auc_CI[0], u=auc_CI[1], sd=np.nanstd(all_auc)),file=open(txt_name, "a"))
+    print("SENSITIVITY={a}, 95%CI={l}-{u},sd={sd}".format(a=np.nanmean(all_sen), l=sen_CI[0],u=sen_CI[1], sd=np.nanstd(all_sen)),file=open(txt_name, "a"))
+    print("SPECIFICITY={a}, 95%CI={l}-{u},sd={sd}".format(a=np.nanmean(all_spec), l=spec_CI[0],u=spec_CI[1], sd=np.nanstd(all_spec)),file=open(txt_name, "a"))
 
 
 
