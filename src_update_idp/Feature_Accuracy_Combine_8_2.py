@@ -47,7 +47,7 @@ def main(argv):
          sys.exit(2)
     for opt, arg in opts:
          if opt == '-h':
-              print("ADNI_Combine.py -k <kfold>")
+              print("Feature_Accuracy_Combine_8_2.py -k <kfold> -f <csv_filename>")
               sys.exit()
          elif opt in ("-k"):
               K = int(arg)
@@ -60,6 +60,8 @@ def main(argv):
 K,filename = main(sys.argv[1:])
 
 print("K fold is "+ str(K))
+print("data filename is "+filename)
+
 # K=10
 
 
