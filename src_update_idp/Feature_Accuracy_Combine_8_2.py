@@ -11,6 +11,10 @@ import scipy.io
 from scipy import stats
 import scipy.stats as st
 
+import matplotlib
+matplotlib.use('Agg') # TO SET METPLOTLIB NOT TO USE XWINDOWS BACKEND
+from matplotlib import pyplot as plt
+
 import pandas as pd
 from numpy import *
 from sklearn.svm import SVC
@@ -30,17 +34,13 @@ from sklearn.ensemble import ExtraTreesClassifier
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import roc_curve, auc,f1_score
 
-import matplotlib
-matplotlib.use('Agg') # TO SET METPLOTLIB NOT TO USE XWINDOWS BACKEND
-from matplotlib import pyplot as plt
-
 import sys, getopt
 # K=sys.argv[1]
 
 def main(argv):
     K = ''
     try:
-        opts, args = getopt.getopt(argv,"k:h")
+        opts, args = getopt.getopt(argv,"k:h:f")
     except getopt.GetoptError:
          print("GetoptError")
          sys.exit(2)
