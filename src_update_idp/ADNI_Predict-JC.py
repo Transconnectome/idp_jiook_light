@@ -44,7 +44,7 @@ def main(argv):
 		sys.exit(2)
 	for opt, arg in opts:
 		if opt == '-h':
-			print("ADNI_Combine.py -k <kfold>")
+			print("ADNI_Predict.py -k <kfold>")
 			sys.exit()
 		elif opt in ("-k"):
 			K = int(arg)
