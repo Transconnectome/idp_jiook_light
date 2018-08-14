@@ -226,7 +226,7 @@ def main_classifier(X,y,name,filename,params,pipe,path_to_save,key):
 
         all_sen = allTP / (allTP + allFN)
         all_spec = allTN / (allTN + allFP)
-    
+
         all_roc_label = np.append(all_roc_label, roc_label)
         all_roc_pred = np.append(all_roc_pred, roc_pred)
         all_roc_prob = np.append(all_roc_prob, roc_prob)
@@ -349,7 +349,7 @@ params1 = {
 #     'linear_model.LogisticRegression':{'linear_model.LogisticRegression__C':[0.001, 0.01, 0.1, 1, 10]}
 # }
 
-path_save='../../imgs3_adni/' + todaystr+'/'+filename+'/'
+path_save='../../imgs3_adni/' + todaystr+'/'+filename+'_PCA_'+ str(K) +'fold +'/'
 # C={}
 # C['models']=models
 # C['params']=params
@@ -380,9 +380,9 @@ for key, value in models1.items():
     print(key)
     para=params1[key]
     path_to_save=path_save+key
-    if not os.path.exists(path_to_save):
-        os.mkdir(path_to_save)
-
+    # if not os.path.exists(path_to_save):
+    #     os.mkdir(path_to_save)
+    os.makedirs(path_to_save, exist_ok=True)
 
 
     X,y=data_fetch_clean(file,3)
