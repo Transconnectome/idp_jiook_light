@@ -206,9 +206,9 @@ def main_classifier(X,y,name,filename,params,pipe,path_to_save,key):
             sen = TP / (TP + FN)
             spec = TN / (TN + FP)
 
-            # avg_sen = np.append(avg_sen, sen)
-            # avg_spec = np.append(avg_spec, spec)
-            # avg_auc = np.append(avg_auc, auc)
+            avg_sen = np.append(avg_sen, sen)
+            avg_spec = np.append(avg_spec, spec)
+            avg_auc = np.append(avg_auc, auc)
 
 #             print('Accuracy:{},AUC:{}'.format(acc, auc))
 #             print('Sensitivity:{},Specificity:{}'.format(sen, spec))
@@ -220,12 +220,12 @@ def main_classifier(X,y,name,filename,params,pipe,path_to_save,key):
         all_FN = np.append(all_FN, avg_FN)
 
         all_acc = np.append(all_acc, avg_acc)
-        # all_sen = np.append(all_sen, avg_sen)
-        # all_spec = np.append(all_spec, avg_spec)
+        all_sen = np.append(all_sen, avg_sen)
+        all_spec = np.append(all_spec, avg_spec)
         all_auc = np.append(all_auc, avg_auc)
 
-        all_sen = allTP / (allTP + allFN)
-        all_spec = allTN / (allTN + allFP)
+        all_sen = all_TP / (all_TP + all_FN)
+        all_spec = all_TN / (all_TN + all_FP)
 
         all_roc_label = np.append(all_roc_label, roc_label)
         all_roc_pred = np.append(all_roc_pred, roc_pred)
