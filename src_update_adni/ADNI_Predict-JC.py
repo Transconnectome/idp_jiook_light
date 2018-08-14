@@ -224,8 +224,8 @@ def main_classifier(X,y,name,filename,params,pipe,path_to_save,key):
         all_spec = np.append(all_spec, avg_spec)
         all_auc = np.append(all_auc, avg_auc)
 
-        all_sen = all_TP / (all_TP + all_FN)
-        all_spec = all_TN / (all_TN + all_FP)
+        # all_sen = all_TP / (all_TP + all_FN)
+        # all_spec = all_TN / (all_TN + all_FP)
 
         all_roc_label = np.append(all_roc_label, roc_label)
         all_roc_pred = np.append(all_roc_pred, roc_pred)
