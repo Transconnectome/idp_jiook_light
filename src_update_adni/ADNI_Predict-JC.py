@@ -349,7 +349,7 @@ params1 = {
 #     'linear_model.LogisticRegression':{'linear_model.LogisticRegression__C':[0.001, 0.01, 0.1, 1, 10]}
 # }
 
-path_save='../../imgs3_adni/' + todaystr+'/'+filename+'_PCA_'+ str(K) +'fold' +'/'
+path_save='../../imgs3_adni/' + todaystr+'/'+filename+'_noPCA_'+ str(K) +'fold' +'/'
 # C={}
 # C['models']=models
 # C['params']=params
@@ -364,18 +364,18 @@ path_save='../../imgs3_adni/' + todaystr+'/'+filename+'_PCA_'+ str(K) +'fold' +'
 # In[ ]:
 
 for key, value in models1.items():
-    pipe=Pipeline([('PCA',PCA()),
-               ('featureExtract', SelectFromModel(ExtraTreesClassifier())),
-               (key, models1[key])
-           ])
+    # pipe=Pipeline([('PCA',PCA()),
+    #            ('featureExtract', SelectFromModel(ExtraTreesClassifier())),
+    #            (key, models1[key])
+    #        ])
 #     pipe=Pipeline([('PCA',PCA()),
 #                ('featureExtract', SelectFromModel(ExtraTreesClassifier())),
 #                (key, models1[key])
 #            ])
-#     pipe=Pipeline([
-#                ('featureExtract', SelectFromModel(ExtraTreesClassifier())),
-#                (key, models1[key])
-#            ])
+    pipe=Pipeline([
+               ('featureExtract', SelectFromModel(ExtraTreesClassifier())),
+               (key, models1[key])
+           ])
 
     print(key)
     para=params1[key]
