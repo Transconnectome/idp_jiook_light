@@ -311,8 +311,8 @@ todaystr = today.isoformat()
 #    # print('exist')
 #     #os.mkdir('../../imgs3_adni/'+ todaystr)
 #     os.mkdir('../../imgs3_adni/'+ todaystr+'/'+filename)
-os.makedirs('../../imgs3_adni/'+ todaystr, exist_ok=True)
-os.makedirs('../../imgs3_adni/'+ todaystr+'/'+filename+'_'+ str(K)+'fold', exist_ok=True)
+# os.makedirs('../../imgs3_adni/'+ todaystr, exist_ok=True)
+# os.makedirs('../../imgs3_adni/'+ todaystr+'/'+filename+'_'+ str(K)+'fold', exist_ok=True)
 
 # In[ ]:
 
@@ -349,7 +349,7 @@ params1 = {
 #     'linear_model.LogisticRegression':{'linear_model.LogisticRegression__C':[0.001, 0.01, 0.1, 1, 10]}
 # }
 
-path_save='../../imgs3_adni/' + todaystr+'/'+filename+'_PCA_'+ str(K) +'fold +'/'
+path_save='../../imgs3_adni/' + todaystr+'/'+filename+'_PCA_'+ str(K) +'fold' +'/'
 # C={}
 # C['models']=models
 # C['params']=params
