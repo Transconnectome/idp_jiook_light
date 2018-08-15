@@ -131,8 +131,8 @@ def main_classifier(X,y,name,filename,params,pipe,path_to_save,key):
     all_roc_prob = []
     all_features=[]
     n_fold = K
-    #rs_list=[33994,31358,27381,8642,7012,42023,44642,44002,30706,12571]
-    rs_list=[33994,31358,27381]
+    rs_list=[33994,31358,27381,8642,7012,42023,44642,44002,30706,12571]
+    #rs_list=[33994,31358,27381]
     for rs in rs_list:
         print('********random seed:{}'.format(rs))
 
@@ -169,7 +169,7 @@ def main_classifier(X,y,name,filename,params,pipe,path_to_save,key):
 #                 ('randomforest', RandomForestClassifier())
 #             ])
 
-            clf = GridSearchCV(estimator=pipe, param_grid=params, cv=inner_cv, scoring='accuracy',n_jobs=64)
+            clf = GridSearchCV(estimator=pipe, param_grid=params, cv=inner_cv, scoring='accuracy',n_jobs=48)
             clf.fit(X_train, y_train)
 
             fs = clf.best_estimator_.named_steps['featureExtract']
@@ -291,9 +291,9 @@ save_name=["MCI converter"]
 # In[4]:
 
 # filename='combine_MConly_wo_dropouts_4_mor+conn'
-filename='combine_MConly_wo_dropouts_2_mor'
-# filename='combine_MConly_wo_dropouts_4_mor+conn'
-# filename='combine_MConly_wo_dropouts_4_mor+conn'
+#filename='combine_MConly_wo_dropouts_2_mor'
+filename='combine_MConly_wo_dropouts_3_conn'
+#filename='combine_MConly_wo_dropouts_4_mor+conn'
 
 file=filename+'.csv'
 cwd=os.getcwd()
@@ -353,7 +353,7 @@ params1 = {
 #     'linear_model.LogisticRegression':{'linear_model.LogisticRegression__C':[0.001, 0.01, 0.1, 1, 10]}
 # }
 
-path_save='../../imgs3_adni/' + todaystr+'/'+filename+'_noPCA_'+ str(K) +'fold' +'/'
+path_save='../../imgs3_adni/' + todaystr+'/'+filename+'_PCA_'+ str(K) +'fold' +'/'
 # C={}
 # C['models']=models
 # C['params']=params
@@ -368,18 +368,18 @@ path_save='../../imgs3_adni/' + todaystr+'/'+filename+'_noPCA_'+ str(K) +'fold' 
 # In[ ]:
 
 for key, value in models1.items():
-    # pipe=Pipeline([('PCA',PCA()),
-    #            ('featureExtract', SelectFromModel(ExtraTreesClassifier())),
-    #            (key, models1[key])
-    #        ])
+    pipe=Pipeline([('PCA',PCA()),
+                ('featureExtract', SelectFromModel(ExtraTreesClassifier())),
+                (key, models1[key])
+            ])
 #     pipe=Pipeline([('PCA',PCA()),
 #                ('featureExtract', SelectFromModel(ExtraTreesClassifier())),
 #                (key, models1[key])
 #            ])
-    pipe=Pipeline([
-               ('featureExtract', SelectFromModel(ExtraTreesClassifier())),
-               (key, models1[key])
-           ])
+#    pipe=Pipeline([
+#               ('featureExtract', SelectFromModel(ExtraTreesClassifier())),
+#               (key, models1[key])
+#           ])
 
     print(key)
     para=params1[key]
