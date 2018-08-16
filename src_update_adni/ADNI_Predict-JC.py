@@ -374,11 +374,10 @@ path_save='../../imgs3_adni/' + todaystr+'/'+filename+'_PCA_'+ str(K) +'fold' +'
 # In[ ]:
 
 for key, value in models1.items():
-<<<<<<< HEAD
-    pipe=Pipeline([('PCA',PCA()),
-                ('featureExtract', SelectFromModel(ExtraTreesClassifier())),
-                (key, models1[key])
-            ])
+#    pipe=Pipeline([('PCA',PCA()),
+#                ('featureExtract', SelectFromModel(ExtraTreesClassifier())),
+#                (key, models1[key])
+#            ])
 #     pipe=Pipeline([('PCA',PCA()),
 #                ('featureExtract', SelectFromModel(ExtraTreesClassifier())),
 #                (key, models1[key])
@@ -387,7 +386,6 @@ for key, value in models1.items():
 #               ('featureExtract', SelectFromModel(ExtraTreesClassifier())),
 #               (key, models1[key])
 #           ])
-=======
     # pipe=Pipeline([('PCA',PCA()),
     #            ('featureExtract', SelectFromModel(ExtraTreesClassifier())),
     #            (key, models1[key])
@@ -400,8 +398,6 @@ for key, value in models1.items():
     #            ('featureExtract', SelectFromModel(ExtraTreesClassifier())),
     #            (key, models1[key])
     #        ])
->>>>>>> 457419b02851778109e51408f540b0b0d735658b
-
     print(key)
     para=params1[key]
     path_to_save=path_save+key
