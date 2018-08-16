@@ -344,11 +344,14 @@ models1 = {
 params1 = {
             'RandomForestClassifier': [{ 'RandomForestClassifier__n_estimators': np.arange(10, 500, 50) },
                                        {'RandomForestClassifier__min_samples_leaf': np.arange(1, 51, 5)},
+									   {'RandomForestClassifier__random_state': np.random.RandomState(1)}
                                       ],
-    'SVC': [
-        {'SVC__kernel': ['rbf'], 'SVC__C': [0.001,0.01,0.1,1, 10]},
-    ],
-    'linear_model.LogisticRegression':{'linear_model.LogisticRegression__C':[0.001, 0.01, 0.1, 1, 10]}
+    'SVC': [{'SVC__kernel': ['rbf'], 'SVC__C': [0.001,0.01,0.1,1, 10]},
+		    {'SVC__random_state': np.random.RandomState(1)}
+           ],
+    'linear_model.LogisticRegression': [{'linear_model.LogisticRegression__C':[0.001, 0.01, 0.1, 1, 10]}
+                                        {'linear_model.LogisticRegression__random_state': np.random.RandomState(1)}
+										 ]
 }
 
 
