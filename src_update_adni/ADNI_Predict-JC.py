@@ -253,8 +253,8 @@ def main_classifier(X,y,name,filename,params,pipe,path_to_save,key):
     #get rid of nans
     all_acc = all_acc[~np.isnan(all_acc)]
     all_sen = all_sen[~np.isnan(all_sen)]
-	all_spec = all_spec[~np.isnan(all_spec)]
-	all_auc = all_auc[~np.isnan(all_auc)]
+    all_spec = all_spec[~np.isnan(all_spec)]
+    all_auc = all_auc[~np.isnan(all_auc)]
 
     acc_CI=st.t.interval(0.95, len(all_acc)-1, loc=np.nanmean(all_acc), scale=np.nanstd(all_acc)/math.sqrt(len(all_acc)))
     sen_CI=st.t.interval(0.95, len(all_sen)-1, loc=np.nanmean(all_sen), scale=np.nanstd(all_sen)/math.sqrt(len(all_sen)))
@@ -418,4 +418,3 @@ for key, value in models1.items():
     y = y.reshape(-1)
     name=save_name[0]
     main_classifier(X,y,name,filename,para,pipe,path_to_save,key)
-
