@@ -305,8 +305,8 @@ save_name=["MCI converter"]
 
 # filename='combine_MConly_wo_dropouts_4_mor+conn'
 #filename='combine_MConly_wo_dropouts_2_mor'
-filename='combine_MConly_wo_dropouts_3_conn'
-#filename='combine_MConly_wo_dropouts_4_mor+conn'
+#filename='combine_MConly_wo_dropouts_3_conn'
+filename='combine_MConly_wo_dropouts_4_mor+conn'
 
 file=filename+'.csv'
 cwd=os.getcwd()
