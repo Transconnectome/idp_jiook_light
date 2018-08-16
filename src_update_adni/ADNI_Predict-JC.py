@@ -250,7 +250,7 @@ def main_classifier(X,y,name,filename,params,pipe,path_to_save,key):
     # spec_CI=st.t.interval(0.95, len(all_spec)-1, loc=np.nanmean(all_spec), scale=st.sem(all_spec))
     # auc_CI=st.t.interval(0.95, len(all_auc)-1, loc=np.nanmean(all_auc), scale=st.sem(all_auc))
 
-
+    #get rid of nans
     all_acc = all_acc[~np.isnan(all_acc)]
     all_sen = all_sen[~np.isnan(all_sen)]
 	all_spec = all_spec[~np.isnan(all_spec)]
