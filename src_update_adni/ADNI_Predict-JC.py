@@ -249,6 +249,13 @@ def main_classifier(X,y,name,filename,params,pipe,path_to_save,key):
     # sen_CI=st.t.interval(0.95, len(all_sen)-1, loc=np.nanmean(all_sen), scale=st.sem(all_sen))
     # spec_CI=st.t.interval(0.95, len(all_spec)-1, loc=np.nanmean(all_spec), scale=st.sem(all_spec))
     # auc_CI=st.t.interval(0.95, len(all_auc)-1, loc=np.nanmean(all_auc), scale=st.sem(all_auc))
+
+
+    all_acc = all_acc[~numpy.isnan(all_acc)]
+    all_sen = all_sen[~numpy.isnan(all_sen)]
+	all_spec = all_spec[~numpy.isnan(all_spec)]
+	all_auc = all_auc[~numpy.isnan(all_auc)]
+
     acc_CI=st.t.interval(0.95, len(all_acc)-1, loc=np.nanmean(all_acc), scale=np.nanstd(all_acc)/math.sqrt(len(all_acc)))
     sen_CI=st.t.interval(0.95, len(all_sen)-1, loc=np.nanmean(all_sen), scale=np.nanstd(all_sen)/math.sqrt(len(all_sen)))
     spec_CI=st.t.interval(0.95, len(all_spec)-1, loc=np.nanmean(all_spec), scale=np.nanstd(all_spec)/math.sqrt(len(all_spec)))
