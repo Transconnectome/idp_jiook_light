@@ -170,7 +170,7 @@ def main_classifier(X,y,name,filename,params,pipe,path_to_save,key):
 #                 ('randomforest', RandomForestClassifier())
 #             ])
 
-            clf = GridSearchCV(estimator=pipe, param_grid=params, cv=inner_cv, scoring='accuracy',n_jobs=48)
+            clf = GridSearchCV(estimator=pipe, param_grid=params, cv=inner_cv, scoring='accuracy',n_jobs=64)
             clf.fit(X_train, y_train)
 
             fs = clf.best_estimator_.named_steps['featureExtract']
@@ -412,5 +412,3 @@ for key, value in models1.items():
     name=save_name[0]
     main_classifier(X,y,name,filename,para,pipe,path_to_save,key)
 
-
-# In[ ]:
