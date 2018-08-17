@@ -245,6 +245,12 @@ def main_classifier(X,y,name,filename,params,pipe,path_to_save,key):
     pickle.dump(all_roc_prob, open(path_to_save+'/'+'roc_prob_'+name+'.p', "wb"))
     pickle.dump(all_features, open(path_to_save+'/'+'features_30'+name+'.p', "wb"))
 
+    #get rid of nans
+    all_acc = all_acc[~np.isnan(all_acc)]
+    all_sen = all_sen[~np.isnan(all_sen)]
+    all_spec = all_spec[~np.isnan(all_spec)]
+    all_auc = all_auc[~np.isnan(all_auc)]
+	
     # acc_CI=st.t.interval(0.95, len(all_acc)-1, loc=np.nanmean(all_acc), scale=st.sem(all_acc))
     # sen_CI=st.t.interval(0.95, len(all_sen)-1, loc=np.nanmean(all_sen), scale=st.sem(all_sen))
     # spec_CI=st.t.interval(0.95, len(all_spec)-1, loc=np.nanmean(all_spec), scale=st.sem(all_spec))
