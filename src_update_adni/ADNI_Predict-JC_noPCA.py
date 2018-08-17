@@ -325,6 +325,13 @@ todaystr = today.isoformat()
 # os.makedirs('../../imgs3_adni/'+ todaystr+'/'+filename+'_'+ str(K)+'fold', exist_ok=True)
 
 # In[ ]:
+models1 = {
+
+    'SVC': SVC(probability=True),
+    'linear_model.LogisticRegression':linear_model.LogisticRegression(),
+    'RandomForestClassifier': RandomForestClassifier(),
+
+}
 
 params1 = {
 
@@ -346,12 +353,6 @@ params1 = {
 }
 
 
-# models1 = {
-
-#     'SVC': SVC(probability=True),
-#     'linear_model.LogisticRegression':linear_model.LogisticRegression()
-
-# }
 
 # params1 = {
 #     'SVC': [
