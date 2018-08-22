@@ -72,7 +72,7 @@ def data_fetch_clean(file,type):
         headers = d_reader.fieldnames
     data=np.array(dd)
     #print(data.shape)
-    idx_IN_columns = np.array(range(60,data.shape[1]),dtype=float64))
+    idx_IN_columns = np.array(range(60,data.shape[1]),dtype=float64)
     #idx_IN_columns = np.append(arange(1,6),np.array(range(24,data.shape[1])))
    # idx_IN_columns = np.append(np.array([3]),np.array(range(11,data.shape[1])))
 
