@@ -261,6 +261,8 @@ def main_classifier(X,y,name,filename,params,pipe,path_to_save,key):
     print("SENSITIVITY={a}, 95%CI={l}-{u},sd={sd}".format(a=np.nanmean(all_sen), l=sen_CI[0],u=sen_CI[1], sd=np.nanstd(all_sen)),file=open(txt_name, "a"))
     print("SPECIFICITY={a}, 95%CI={l}-{u},sd={sd}".format(a=np.nanmean(all_spec), l=spec_CI[0],u=spec_CI[1], sd=np.nanstd(all_spec)),file=open(txt_name, "a"))
 
+    print("ACC={a},  95%CI={l}-{u}".format(a=np.nanmean(all_acc),l=acc_CI[0], u=acc_CI[1]))
+
 
 
     fpr = dict()
