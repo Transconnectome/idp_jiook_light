@@ -83,6 +83,7 @@ def data_fetch_clean(file,type):
     # X = stats.zscore(X)    # turing this off for now
     #print(features.shape)
     y=data[:,type]
+	print(y)
 #/ 6:AD-normal / 7:AD-MCI / 8:MCI-normal
 
 
