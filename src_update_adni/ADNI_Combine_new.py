@@ -76,7 +76,7 @@ def data_fetch_clean(file,type):
     #idx_IN_columns = np.append(arange(1,6),np.array(range(24,data.shape[1])))
    # idx_IN_columns = np.append(np.array([3]),np.array(range(11,data.shape[1])))
 
-    print(idx_IN_columns)
+    # print(idx_IN_columns)
     X=data[:,idx_IN_columns]
     #features=data[:,11:data.shape[1]]
     #features = features.transpose()
