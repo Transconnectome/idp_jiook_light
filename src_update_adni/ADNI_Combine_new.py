@@ -86,7 +86,8 @@ def data_fetch_clean(file,type):
     print(y)
 #/ 6:AD-normal / 7:AD-MCI / 8:MCI-normal
 
-    ind_num=np.isnan(y)
+    # ind_num=np.isnan(y)
+    ind_num=pd.notnull(y)
     # print(ind_num.shape)
 
 
