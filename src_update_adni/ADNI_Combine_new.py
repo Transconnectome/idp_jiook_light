@@ -72,7 +72,7 @@ def data_fetch_clean(file,type):
         headers = d_reader.fieldnames
     data=np.array(dd)
     #print(data.shape)
-    idx_IN_columns = np.array(range(18,data.shape[1]))
+    idx_IN_columns = np.array(range(60,data.shape[1]))
     #idx_IN_columns = np.append(arange(1,6),np.array(range(24,data.shape[1])))
    # idx_IN_columns = np.append(np.array([3]),np.array(range(11,data.shape[1])))
 
@@ -80,7 +80,7 @@ def data_fetch_clean(file,type):
     X=data[:,idx_IN_columns]
     #features=data[:,11:data.shape[1]]
     #features = features.transpose()
-    X = stats.zscore(X)
+    # X = stats.zscore(X)    # turing this off for now
     #print(features.shape)
     y=data[:,type]
 #/ 6:AD-normal / 7:AD-MCI / 8:MCI-normal
