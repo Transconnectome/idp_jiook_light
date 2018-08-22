@@ -370,15 +370,15 @@ for key, value in models1.items():
 #         os.mkdir(path_to_save)
     MM=pd.DataFrame()
     SS=pd.DataFrame()
-    for i in range(6,9):
-            print(save_name[i-6])
+    for i in range(11,13):
+            print(save_name[i-10])
             X,y=data_fetch_clean(file,i)
 
             y = y.reshape(-1)
 #             F=SelectFromModel(ExtraTreesClassifier(),prefit=True)
 #             X_feature=F.transform(X)
 #             list(X_features)
-            name=save_name[i-6]
+            name=save_name[i-10]
             main_classifier(X,y,name,filename,para,pipe,path_to_save,key)
             #FD=main_classifier(X,y,name,filename,para,pipe,path_to_save,key)
             #M=FD.mean(axis=0)
