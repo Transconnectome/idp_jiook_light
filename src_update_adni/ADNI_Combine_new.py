@@ -70,7 +70,7 @@ def data_fetch_clean(file,type):
 
         #get fieldnames from DictReader object and store in list
         headers = d_reader.fieldnames
-    data=np.array(dd,,dtype=float64)
+    data=np.array(dd,dtype=float64)
     #print(data.shape)
     idx_IN_columns = np.array(range(60,data.shape[1]))
     #idx_IN_columns = np.append(arange(1,6),np.array(range(24,data.shape[1])))
