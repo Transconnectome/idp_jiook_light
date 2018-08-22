@@ -314,8 +314,8 @@ import time, datetime, os
 today = datetime.date.today()
 
 todaystr = today.isoformat()
-os.makedirs('../../imgs3_adni/'+ todaystr, exist_ok=True)
-os.makedirs('../../imgs3_adni/'+ todaystr+'/'+filename+'_'+ str(K)+'fold', exist_ok=True)
+os.makedirs('../../../imgs3_adni/'+ todaystr, exist_ok=True)
+os.makedirs('../../../imgs3_adni/'+ todaystr+'/'+filename+'_'+ str(K)+'fold', exist_ok=True)
 
 # if not os.path.exists('../../imgs3_adni/'+todaystr):
 #    # print('exist')
@@ -347,7 +347,7 @@ params1 = {
     'linear_model.LogisticRegression':{'linear_model.LogisticRegression__C':[0.001, 0.01, 0.1, 1, 10]}
 }
 
-path_save='../../imgs3_adni/' + todaystr+'/'+filename+'_noPCA_'+ str(K)+'fold' + '/'
+path_save='../../../imgs3_adni/' + todaystr+'/'+filename+'_noPCA_'+ str(K)+'fold' + '/'
 # C={}
 # C['models']=models
 # C['params']=params
