@@ -368,6 +368,7 @@ for key, value in models1.items():
     print(key)
     para=params1[key]
     path_to_save=path_save+key
+    print(path_to_save)
     os.makedirs(path_to_save, exist_ok=True)
 #     if not os.path.exists(path_to_save):
 #         os.mkdir(path_to_save)
