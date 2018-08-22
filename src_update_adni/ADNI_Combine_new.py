@@ -70,9 +70,9 @@ def data_fetch_clean(file,type):
 
         #get fieldnames from DictReader object and store in list
         headers = d_reader.fieldnames
-    data=np.array(dd,dtype=float64)
+    data=np.array(dd)
     #print(data.shape)
-    idx_IN_columns = np.array(range(60,data.shape[1]))
+    idx_IN_columns = np.array(range(24,data.shape[1]))
     #idx_IN_columns = np.append(arange(1,6),np.array(range(24,data.shape[1])))
    # idx_IN_columns = np.append(np.array([3]),np.array(range(11,data.shape[1])))
 
@@ -372,14 +372,14 @@ for key, value in models1.items():
     MM=pd.DataFrame()
     SS=pd.DataFrame()
     for i in range(11,13):
-            print(save_name[i-10])
+            print(save_name[i-11])
             X,y=data_fetch_clean(file,i)
 
             y = y.reshape(-1)
 #             F=SelectFromModel(ExtraTreesClassifier(),prefit=True)
 #             X_feature=F.transform(X)
 #             list(X_features)
-            name=save_name[i-10]
+            name=save_name[i-11]
             main_classifier(X,y,name,filename,para,pipe,path_to_save,key)
             #FD=main_classifier(X,y,name,filename,para,pipe,path_to_save,key)
             #M=FD.mean(axis=0)
