@@ -23,7 +23,7 @@ d_rid_conn=read.csv("../group_connectome/connectome_RID_179.csv",header=T)
 d_full_conn_with_RID<-cbind.data.frame(d_rid_conn,d_full_conn)
 d_combine_new_biomarker_correct_full_conn_5=merge(d_combine_new_biomarker_correct_1,d_full_conn_with_RID,by="RID",all.x=F)
 
-write.csv(file="d_combine_new_biomarker_correct_full_conn_5.csv",na="NaN",d_combine_new_biomarker_correct_full_conn_5)
+write.csv(file="d_combine_new_biomarker_correct_full_conn_5.csv",na="NaN",d_combine_new_biomarker_correct_full_conn_5,row.names=F)
 
 
 
