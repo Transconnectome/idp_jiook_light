@@ -301,8 +301,8 @@ save_name=["AD vs SMC","AD vs MCI","MCI vs SMC"]
 # In[5]:
 
 #filename='d_combine_new_biomarker_correct_mor_2'
-filename='d_combine_new_biomarker_correct_mor_conn_3'
-#filename='d_combine_new_biomarker_correct_conn_4'
+#filename='d_combine_new_biomarker_correct_mor_conn_3'
+filename='d_combine_new_biomarker_correct_conn_4'
 
 file=filename+'.csv'
 cwd=os.getcwd()
