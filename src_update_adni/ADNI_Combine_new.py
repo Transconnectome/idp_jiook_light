@@ -300,8 +300,10 @@ save_name=["AD vs SMC","AD vs MCI","MCI vs SMC"]
 
 # In[5]:
 
-#filename='d_combine_new_biomarker_correct_mor_2'
-filename='d_combine_new_biomarker_correct_mor_conn_3'
+filename='d_combine_new_biomarker_correct_mor_2'
+#filename='d_combine_new_biomarker_correct_mor_conn_3'
+#filename='d_combine_new_biomarker_correct_conn_4'
+
 file=filename+'.csv'
 cwd=os.getcwd()
 os.chdir('../data/adni/new_final')
@@ -375,7 +377,7 @@ for key, value in models1.items():
 #         os.mkdir(path_to_save)
     MM=pd.DataFrame()
     SS=pd.DataFrame()
-    for i in range(11,13):
+    for i in range(13,14):
             print(save_name[i-11])
             X,y=data_fetch_clean(file,i)
 
